@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "597164812529",
+    "project_id": "lemme-in-db6e1",
+    "storage_bucket": "lemme-in-db6e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597164812529:android:7bd76c48ec1b8952362150",
+        "android_client_info": {
+          "package_name": "com.example.lemme_in_profofconc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGE03UKRvnwaLsz4peGYRJVBs1MXEX-Ts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597164812529:android:118dc0dc8f4b10da362150",
+        "android_client_info": {
+          "package_name": "com.lemmein.flutter_lemme_in_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGE03UKRvnwaLsz4peGYRJVBs1MXEX-Ts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

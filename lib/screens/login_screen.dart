@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lemme_in_profofconc/repositories/auth_repository.dart';
+import 'package:lemme_in_profofconc/repositories/repositories.dart';
 
 import '/cubits/cubits.dart';
-import '/repositories/repositories.dart';
-import '/screens/screens.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -17,7 +18,8 @@ class LoginScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: BlocProvider(
-          create: (_) => LoginCubit(context.read<AuthRepository>()),
+          create: (_) =>
+              LoginCubit(context.read<Repositories>().authRepository),
           child: const LoginForm(),
         ),
       ),
@@ -112,10 +114,10 @@ class _SignupButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Colors.white,
+        backgroundColor: Colors.white,
         fixedSize: const Size(200, 40),
       ),
-      onPressed: () => Navigator.of(context).push<void>(SignupScreen.route()),
+      onPressed: () => context.go('/login/signup'),
       child: const Text(
         'CREATE ACCOUNT',
         style: TextStyle(color: Colors.blue),

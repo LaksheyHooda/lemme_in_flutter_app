@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-
-import '/repositories/repositories.dart';
+import 'package:lemme_in_profofconc/repositories/auth_repository.dart';
 
 part 'login_state.dart';
 

@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lemme_in_profofconc/repositories/auth_repository.dart';
 
 import '/models/models.dart';
-import '/repositories/repositories.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
@@ -23,8 +23,14 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<AppUserChanged>(_onUserChanged);
     on<AppLogoutRequested>(_onLogoutRequested);
 
+    if (authRepository.currentUser.isNotEmpty) {
+      //User is logged in
+    }
+
     _userSubscription = _authRepository.user.listen(
-      (user) => add(AppUserChanged(user)),
+      (user) {
+        add(AppUserChanged(user));
+      },
     );
   }
 
@@ -32,6 +38,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     AppUserChanged event,
     Emitter<AppState> emit,
   ) {
+    if (event.user.isNotEmpty) {
+      print("user logged in?");
+    }
     emit(
       event.user.isNotEmpty
           ? AppState.authenticated(event.user)

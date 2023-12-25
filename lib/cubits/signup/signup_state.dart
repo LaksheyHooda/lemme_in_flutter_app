@@ -5,11 +5,15 @@ enum SignupStatus { initial, submitting, success, error }
 class SignupState extends Equatable {
   final String email;
   final String password;
+  final String firstName;
+  final String lastName;
   final SignupStatus status;
 
   const SignupState({
     required this.email,
     required this.password,
+    required this.firstName,
+    required this.lastName,
     required this.status,
   });
 
@@ -17,6 +21,8 @@ class SignupState extends Equatable {
     return const SignupState(
       email: '',
       password: '',
+      firstName: '',
+      lastName: '',
       status: SignupStatus.initial,
     );
   }
@@ -24,15 +30,19 @@ class SignupState extends Equatable {
   SignupState copyWith({
     String? email,
     String? password,
+    String? firstName,
+    String? lastName,
     SignupStatus? status,
   }) {
     return SignupState(
       email: email ?? this.email,
       password: password ?? this.password,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
       status: status ?? this.status,
     );
   }
 
   @override
-  List<Object> get props => [email, password, status];
+  List<Object> get props => [email, firstName, lastName, password, status];
 }

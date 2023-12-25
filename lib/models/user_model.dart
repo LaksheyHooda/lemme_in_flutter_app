@@ -6,12 +6,14 @@ class User extends Equatable {
     this.email,
     this.name,
     this.photo,
+    this.verified,
   });
 
   final String id;
   final String? email;
   final String? name;
   final String? photo;
+  final bool? verified;
 
   static const empty = User(id: '');
 
@@ -19,5 +21,5 @@ class User extends Equatable {
   bool get isNotEmpty => this != User.empty;
 
   @override
-  List<Object?> get props => [id, email, name, photo];
+  List<Object?> get props => [id, email, name, photo, verified];
 }

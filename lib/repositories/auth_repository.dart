@@ -20,16 +20,23 @@ class AuthRepository {
     });
   }
 
-  Future<void> signup({
+  Future<bool> signup({
     required String email,
     required String password,
+    required String firstName,
+    required String lastName,
   }) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-    } catch (_) {}
+      await _firebaseAuth.currentUser!
+          .updateDisplayName("$firstName $lastName");
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
 
   Future<void> logInWithEmailAndPassword({
@@ -41,7 +48,10 @@ class AuthRepository {
         email: email,
         password: password,
       );
-    } catch (_) {}
+      print("success login");
+    } catch (_) {
+      print("unsucess");
+    }
   }
 
   Future<void> logOut() async {
@@ -55,6 +65,11 @@ class AuthRepository {
 
 extension on firebase_auth.User {
   User get toUser {
-    return User(id: uid, email: email, name: displayName, photo: photoURL);
+    return User(
+        id: uid,
+        email: email,
+        name: displayName,
+        photo: photoURL,
+        verified: emailVerified);
   }
 }
